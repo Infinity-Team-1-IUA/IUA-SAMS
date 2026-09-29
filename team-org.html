@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Team – Organizational Structure</title>
+    <meta name="description"
+        content="The official organizational hierarchy of Infinity Team at Sadat Academy for Management Sciences – Assiut Branch.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Variables ──────────────────────────────── */
+        :root {
+            --blue: #0A58CA;
+            --blue-mid: #0070E0;
+            --blue-light: #0084FF;
+            --grad: linear-gradient(135deg, #0A58CA 0%, #0084FF 100%);
+            --gold: #F59E0B;
+            --silver: #64748B;
+            --bg: #F0F4FA;
+            --white: #FFFFFF;
+            --card: #FFFFFF;
+            --text: #1A202C;
+            --muted: #64748B;
+            --border: #E2E8F0;
+            --r: 16px;
+            --shadow-sm: 0 2px 8px rgba(10, 88, 202, 0.07);
+            --shadow-md: 0 8px 30px rgba(10, 88, 202, 0.12);
+            --shadow-lg: 0 20px 60px rgba(10, 88, 202, 0.18);
+            --connector: #CBD5E1;
+        }
+        /* ── Reset ────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        img {
+            max-width: 100%;
+        }
+        /* ── Page Header ──────────────────────────── */
+        .page-header {
+            background: var(--grad);
+            padding: 3.5rem 1.5rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '∞';
+            position: absolute;
+            font-size: 22rem;
+            font-weight: 900;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scaleX(1.4);
+            pointer-events: none;
+            line-height: 1;
+            color: #fff;
+        }
+        .header-logo {
+            height: 64px;
+            width: auto;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 6px 14px;
+            border-radius: 12px;
+            margin-bottom: 1.25rem;
+        }
+        .page-header h1 {
+            color: #fff;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.4rem;
+        }
+        .page-header p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.88rem;
+            margin-top: 1.5rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #fff;
+        }
+        /* ── Org Tree Wrapper ────────────────────── */
+        .org-tree {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.5rem 5rem;
+            margin-top: -2.5rem;
+            /* pull up over header wave */
+            position: relative;
+            z-index: 2;
+        }
+        /* ── Level rows ──────────────────────────── */
+        .org-level {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        /* Vertical connector FROM level downward */
+        .org-connector-down {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            height: 48px;
+            position: relative;
+        }
+        .org-connector-down::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: var(--connector);
+            border-radius: 2px;
+        }
+        /* Horizontal connector bar spanning committees */
+        .org-h-bar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            height: 48px;
+        }
+        .org-h-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: var(--connector);
+            border-radius: 2px;
+        }
+        /* Vertical stubs coming down from h-bar for each committee */
+        .org-committee-stubs {
+            position: absolute;
+            top: 3px;
+            bottom: 0;
+            left: 10%;
+            right: 10%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+        .org-stub {
+            width: 3px;
+            height: 45px;
+            background: var(--connector);
+            border-radius: 2px;
+        }
+        /* ── Base card ───────────────────────────── */
+        .person-card {
+            background: var(--card);
+            border-radius: var(--r);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .person-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .card-top-bar {
+            height: 6px;
+            background: var(--grad);
+        }
+        .card-body {
+            padding: 1.5rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .card-role-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 0.5rem;
+            background: rgba(10, 88, 202, 0.08);
+            color: var(--blue);
+        }
+        .card-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.2;
+        }
+        .card-title {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+        .card-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            border-radius: inherit;
+        }
+        .member-photo-mini img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+        }
+        .card-photo {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: var(--bg);
+            border: 2px dashed var(--border);
+            border-radius: calc(var(--r) - 4px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            color: var(--muted);
+            transition: border-color 0.25s;
+        }
+        .person-card:hover .card-photo {
+            border-color: var(--blue-light);
+        }
+        .card-photo i {
+            font-size: 2.5rem;
+            opacity: 0.3;
+            color: var(--blue);
+        }
+        .card-photo span {
+            font-size: 0.78rem;
+            font-weight: 500;
+            opacity: 0.6;
+        }
+        /* ── TIER 1: Team Leader ─────────────────── */
+        .tier-leader .person-card {
+            width: min(400px, 100%);
+            box-shadow: var(--shadow-lg);
+        }
+        .tier-leader .card-top-bar {
+            height: 8px;
+        }
+        .tier-leader .card-role-badge {
+            background: var(--gold);
+            color: #fff;
+            font-size: 0.75rem;
+        }
+        .tier-leader .card-name {
+            font-size: 1.5rem;
+        }
+        .tier-leader .card-title {
+            font-size: 0.95rem;
+            color: var(--blue);
+            font-weight: 600;
+        }
+        .tier-leader .card-photo i {
+            font-size: 3.5rem;
+        }
+        /* ── TIER 2: Vice Leader ─────────────────── */
+        .tier-vice .person-card {
+            width: min(340px, 100%);
+        }
+        .tier-vice .card-role-badge {
+            background: rgba(100, 116, 139, 0.12);
+            color: var(--silver);
+        }
+        .tier-vice .card-name {
+            font-size: 1.25rem;
+        }
+        /* ── TIER 3: Committees grid ─────────────── */
+        .committees-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+            margin-top: 48px;
+            position: relative;
+        }
+        /* connector spine from top to committees */
+        .committees-grid::before {
+            content: '';
+            position: absolute;
+            top: -48px;
+            left: 50%;
+            right: 0;
+            width: 3px;
+            height: 48px;
+            background: var(--connector);
+            transform: translateX(-50%);
+        }
+        /* horizontal bar across all committees */
+        .committees-grid::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: calc(100% / 6);
+            right: calc(100% / 6);
+            height: 3px;
+            background: var(--connector);
+        }
+        @media (max-width: 900px) {
+            .committees-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .committees-grid::after {
+                left: 25%;
+                right: 25%;
+            }
+        }
+        @media (max-width: 580px) {
+            .committees-grid {
+                grid-template-columns: 1fr;
+            }
+            .committees-grid::after,
+            .committees-grid::before {
+                display: none;
+            }
+        }
+        /* ── Committee Card ──────────────────────── */
+        .committee-card {
+            background: var(--card);
+            border-radius: var(--r);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+            transition: box-shadow 0.25s;
+        }
+        .committee-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        /* connector from the top hortizontal bar into each committee */
+        .committee-card::before {
+            content: '';
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 26px;
+            background: var(--connector);
+        }
+        .committee-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .committee-header i {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        /* Unique colors per committee */
+        .comm-marketing .committee-header {
+            background: linear-gradient(135deg, #0A58CA, #0084FF);
+        }
+        .comm-pr .committee-header {
+            background: linear-gradient(135deg, #7C3AED, #A855F7);
+        }
+        .comm-or .committee-header {
+            background: linear-gradient(135deg, #0891B2, #22D3EE);
+        }
+        .comm-scc .committee-header {
+            background: linear-gradient(135deg, #059669, #34D399);
+        }
+        .comm-it .committee-header {
+            background: linear-gradient(135deg, #D97706, #FBBF24);
+        }
+        .comm-hr .committee-header {
+            background: linear-gradient(135deg, #DB2777, #F472B6);
+        }
+        .committee-body-inner {
+            padding: 1rem 1.25rem 1.25rem;
+        }
+        /* ── Committee Member Row ────────────────── */
+        .committee-members {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .member-item {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding: 0.75rem;
+            background: var(--bg);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .member-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+        /* role dot */
+        .role-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .role-head {
+            background: var(--blue);
+        }
+        .role-vice {
+            background: var(--silver);
+        }
+        .role-member {
+            background: #10B981;
+        }
+        .role-hr {
+            background: #DB2777;
+        }
+        .member-photo-mini {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px dashed var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--muted);
+            transition: border-color 0.2s;
+        }
+        .member-item:hover .member-photo-mini {
+            border-color: var(--blue-light);
+        }
+        .member-photo-mini i {
+            font-size: 1.1rem;
+            opacity: 0.4;
+        }
+        .member-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .member-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .member-role {
+            font-size: 0.75rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        .role-tag {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.2rem 0.5rem;
+            border-radius: 999px;
+            flex-shrink: 0;
+        }
+        .tag-head {
+            background: rgba(10, 88, 202, 0.1);
+            color: var(--blue);
+        }
+        .tag-vice {
+            background: rgba(100, 116, 139, 0.1);
+            color: var(--silver);
+        }
+        .tag-member {
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
+        .tag-hr {
+            background: rgba(219, 39, 119, 0.1);
+            color: #DB2777;
+        }
+        /* ── Legend ──────────────────────────────── */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2.5rem auto 0;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        /* ── Footer ──────────────────────────────── */
+        .page-footer {
+            text-align: center;
+            padding: 2.5rem 1rem 3rem;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+        .page-footer a {
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- ─── Page Header ─────────────────────────────────────── -->
+    <div class="page-header">
+        <img src="imge/iua.jpeg" alt="Infinity Team Logo" class="header-logo" onerror="this.style.display='none'">
+        <h1>Organizational Structure</h1>
+        <p>Infinity Team · Sadat Academy for Management Sciences · Assiut Branch</p>
+        <br>
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back to Main Site</a>
+    </div>
+    <!-- ─── Org Tree ────────────────────────────────────────── -->
+    <div class="org-tree">
+        <!-- TIER 1 – Team Leader -->
+        <div class="org-level tier-leader">
+            <div class="person-card">
+                <div class="card-top-bar"></div>
+                <div class="card-body">
+                    <span class="card-role-badge"><i class="fa-solid fa-crown"></i> &nbsp;Team Leader</span>
+                    <h2 class="card-name">Ahmed Mostafa</h2>
+                    <p class="card-title">President &amp; Team Leader</p>
+                    <div class="card-photo">
+                        <img src="images/ahmed_mostafa.jpg" alt="Ahmed Mostafa" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i><span>Photo Placeholder</span>'">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Connector down -->
+        <div class="org-connector-down"></div>
+        <!-- TIER 2 – Vice Team Leader -->
+        <div class="org-level tier-vice">
+            <div class="person-card">
+                <div class="card-top-bar" style="background:linear-gradient(135deg,#475569,#94A3B8);"></div>
+                <div class="card-body">
+                    <span class="card-role-badge"><i class="fa-solid fa-user-shield"></i> &nbsp;Vice Team Leader</span>
+                    <h2 class="card-name">Ahmed Othman</h2>
+                    <p class="card-title">Vice President &amp; Deputy</p>
+                    <div class="card-photo">
+                        <img src="images/ahmed_othman.jpg" alt="Ahmed Othman" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i><span>Photo Placeholder</span>'">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background:var(--blue)"></div> Head of Committee
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:var(--silver)"></div> Vice Head
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#10B981"></div> Committee Member
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#DB2777"></div> HR Responsible
+            </div>
+        </div>
+        <!-- TIER 3 – Committees Grid -->
+        <div class="committees-grid m-5">
+            <!-- ── MARKETING ── -->
+            <div class="committee-card comm-marketing">
+                <div class="committee-header">
+                    <i class="fa-solid fa-chart-line"></i> Marketing Committee
+                </div>
+                <div class="committee-body-inner">
+                    <div class="committee-members">
+                        <div class="member-item">
+                            <div class="role-dot role-head"></div>
+                            <div class="member-photo-mini">
+                                <img src="images/mostafa_fahmy.jpg" alt="Mostafa Fahmy" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>'">
+                            </div>
+                            <div class="member-info">
+                                <div class="member-name">Mostafa Fahmy</div>
+                                <div class="member-role">Head of Marketing</div>
+                            </div>
+                            <span class="role-tag tag-head">Head</span>
+                        </div>
+                        <div class="member-item">
+                            <div class="role-dot role-vice"></div>
+                            <div class="member-photo-mini">
+                                <img src="images/kareem_saber.jpg" alt="Kareem Saber" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>'">
+                            </div>
+                            <div class="member-info">
+                                <div class="member-name">Kareem Saber</div>
+                                <div class="member-role">Vice of Marketing</div>
+                            </div>
+                            <span class="role-tag tag-vice">Vice</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ── PR ── -->
+            <div class="committee-card comm-pr">
+                <div class="committee-header">
+                    <i class="fa-solid fa-bullhorn"></i> PR Committee
+                </div>
+                <div class="committee-body-inner">
+                    <div class="committee-members">
+                        <div class="member-item">
+                            <div class="role-dot role-head"></div>
+                            <div class="member-photo-mini">
+                                <img src="images/Ahmed Wael.jpg" alt="Ahmed Wael" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>'">
+                            </div>
+                            <div class="member-info">
+                                <div class="member-name">Ahmed Wael</div>
+                                <div class="member-role">Head of PR</div>
+                            </div>
+                            <span class="role-tag tag-head">Head</span>
+                        </div>
+                        <div class="member-item">
+                            <div class="role-dot role-vice"></div>
+                            <div class="member-photo-mini">
+                                <img src="images/Safia Sayed.jpg" alt="Safia Sayed" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>'">
+                            </div>
+                            <div class="member-info">
+                                <div class="member-name">Safia Sayed</div>
+                                <div class="member-role">Vice of PR</div>
+                            </div>
+                            <span class="role-tag tag-vice">Vice</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ── OR ── -->
+            <div class="committee-card comm-or">
+                <div class="committee-header">
+                    <i class="fa-solid fa-calendar-check"></i> OR Committee
+                </div>
+                <div class="committee-body-inner">
+                    <div class="committee-members">
+                        <div class="member-item">
+                            <div class="role-dot role-head"></div>
+                            <div class="member-photo-mini">
+                                <img src="images/musab_mostafa.jpg" alt="Musab Mostafa" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>'">
+                            </div>
+                            <div class="member-info">
+                                <div class="member-name">Musab Mostafa</div>
+                                <div class="member-role">Head of OR</div>
+                            </div>
+                            <span class="role-tag tag-head">Head</span>
+                        </div>
+                        <div class="member-item">
+                            <div class="role-dot role-vice"></div>
+                            <div class="member-photo-mini">
+                                <img src="images/dalia_nasser.jpg" alt="Dalia Nasser" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>'">
+                            </div>
+                            <div class="member-info">
+                                <div class="member-name">Dalia Nasser</div>
+                                <div class="member-role">Vice of OR</div>
+                            </div>
+                            <span class="role-tag tag-vice">Vice</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ── SCC ── -->
+            <div class="committee-card comm-scc">
+                <div class="committee-header">
+                    <i class="fa-solid fa-flask"></i> S&C Committee
+                </div>
+                <div class="committee-body-inner">
+                    <div class="committee-members">
+                        <div class="member-item">
+                            <div class="role-dot role-head"></div>
+                            <div class="member-photo-mini">
+                                <img src="images/gihad_yasser.jpg" alt="Gihad Yasser" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>'">
+                            </div>
+                            <div class="member-info">
+                                <div class="member-name">Gihad Yasser</div>
+                                <div class="member-role">Head of S&C</div>
+                            </div>
+                            <span class="role-tag tag-head">Head</span>
+                        </div>
+                        <div class="member-item">
+                            <div class="role-dot role-vice"></div>
+                            <div class="member-photo-mini"><i class="fa-solid fa-user"></i></div>
+                            <div class="member-info">
+                                <div class="member-name">Areej Gamal</div>
+                                <div class="member-role">Vice of S&C</div>
+                            </div>
+                            <span class="role-tag tag-vice">Vice</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ── HR ── -->
+            <div class="committee-card comm-hr">
+                <div class="committee-header">
+                    <i class="fa-solid fa-handshake"></i> HR Team
+                </div>
+                <div class="committee-body-inner">
+                    <div class="committee-members">
+                        <div class="member-item">
+                            <div class="role-dot role-hr"></div>
+                            <div class="member-photo-mini">
+                                <img src="images/amir_mohamed.jpg" alt="Amir Mohamed" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>'">
+                            </div>
+                            <div class="member-info">
+                                <div class="member-name">Amir Mohamed</div>
+                                <div class="member-role">HR Responsible</div>
+                            </div>
+                            <span class="role-tag tag-hr">HR</span>
+                        </div>
+                        <div class="member-item">
+                            <div class="role-dot role-hr"></div>
+                            <div class="member-photo-mini">
+                                <img src="images/shreif_aldsoky.jpg" alt="Shreif Aldsoky" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>'">
+                            </div>
+                            <div class="member-info">
+                                <div class="member-name">Shreif Aldsoky</div>
+                                <div class="member-role">HR Responsible</div>
+                            </div>
+                            <span class="role-tag tag-hr">HR</span>
+                        </div>
+                        <div class="member-item">
+                            <div class="role-dot role-hr"></div>
+                            <div class="member-photo-mini">
+                                <img src="images/shams_yasser.jpg" alt="Shams Yasser" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>'">
+                            </div>
+                            <div class="member-info">
+                                <div class="member-name">Shams Yasser</div>
+                                <div class="member-role">HR Responsible</div>
+                            </div>
+                            <span class="role-tag tag-hr">HR</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /committees-grid -->
+    </div><!-- /org-tree -->
+    <!-- Footer -->
+    <div class="page-footer">
+        <p>© 2026 Infinity Team · Sadat Academy for Management Sciences, Assiut Branch</p>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-top: 0.4rem;">
+            Designed by: <span style="font-weight: 700; color: var(--text);"> Ahmed Othman & Gihad Yasser </span> ·<br>
+            Email: <a href="mailto:ahmed3thman01@gmail.com" style="color: var(--blue); text-decoration: none;">ahmed3thman01@gmail.com</a><br>
+            Email: <a href="mailto:gihad12az@gmail.com" style="color: var(--blue); text-decoration: none;">gihad12az@gmail.com</a>
+        </p>
+        <p style="margin-top:0.8rem">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Return to Main Site</a> &nbsp;·&nbsp;
+            <a href="team-directory.html"><i class="fa-solid fa-list"></i> View Full Directory</a>
+        </p>
+    </div>
+</body>
+</html>

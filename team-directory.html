@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Team – Leadership Directory</title>
+    <meta name="description"
+        content="Meet the 14 leaders of Infinity Team – Sadat Academy for Management Sciences, Assiut Branch.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Reset & Base ─────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --blue: #0A58CA;
+            --blue-light: #0084FF;
+            --blue-grad: linear-gradient(135deg, #0A58CA 0%, #0084FF 100%);
+            --bg: #F4F6FB;
+            --card-bg: #FFFFFF;
+            --text: #1E1E24;
+            --muted: #6C757D;
+            --border: #E2E8F0;
+            --radius: 14px;
+            --shadow: 0 8px 30px rgba(10, 88, 202, 0.08);
+            --font: 'Inter', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 4rem;
+        }
+        /* ── Page Header ─────────────────────────────── */
+        .page-header {
+            background: var(--blue-grad);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '∞';
+            position: absolute;
+            font-size: 18rem;
+            font-weight: 900;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            line-height: 1;
+        }
+        .header-logo {
+            max-height: 70px;
+            width: auto;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 12px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        .page-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .page-header p {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #fff;
+        }
+        /* ── Directory Wrapper ───────────────────────── */
+        .directory {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        /* ── Section Divider Labels ──────────────────── */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .section-label span {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--blue);
+            white-space: nowrap;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to right, var(--blue-light), transparent);
+            border-radius: 2px;
+        }
+        /* ── Leader Card ─────────────────────────────── */
+        .leader-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .leader-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(10, 88, 202, 0.14);
+        }
+        /* Thin accent stripe at the top */
+        .leader-card-accent {
+            height: 5px;
+            background: var(--blue-grad);
+        }
+        .leader-card-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.3rem;
+        }
+        /* Committee badge */
+        .committee-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(10, 88, 202, 0.08);
+            color: var(--blue);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 0.5rem;
+        }
+        .leader-name {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.3px;
+        }
+        .leader-title {
+            font-size: 0.98rem;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+        /* ── Unified Photo Frame ─────────────────────── */
+        /* Shared wrapper that enforces identical size/shape for every member */
+        .photo-frame {
+            width: 160px;
+            height: 160px;
+            border-radius: var(--radius);
+            border: 2px solid var(--border);
+            overflow: hidden;
+            flex-shrink: 0;
+            margin-bottom: 0.5rem;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            background: var(--bg);
+        }
+        .leader-card:hover .photo-frame {
+            border-color: var(--blue-light);
+            box-shadow: 0 6px 20px rgba(0, 132, 255, 0.18);
+        }
+        /* Leader Photo — fills the frame */
+        .leader-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            border-radius: 0;
+            border: none;
+            transition: transform 0.35s ease;
+        }
+        .leader-card:hover .leader-photo {
+            transform: scale(1.06);
+        }
+        /* Photo placeholder — same dimensions as the frame */
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--muted);
+        }
+        .photo-placeholder i {
+            font-size: 3rem;
+            opacity: 0.35;
+            color: var(--blue);
+        }
+        .photo-placeholder span {
+            font-size: 0.78rem;
+            font-weight: 500;
+            opacity: 0.55;
+        }
+        @media (max-width: 480px) {
+            .photo-frame {
+                width: 130px;
+                height: 130px;
+            }
+        }
+        /* ── Count Badge ─────────────────────────────── */
+        .count-pill {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.3rem 1rem;
+            border-radius: 999px;
+            margin-top: 1rem;
+        }
+        /* ── Footer ──────────────────────────────────── */
+        .page-footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem 1rem;
+            font-size: 0.88rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <div class="page-header">
+        <img src="imge/iua.jpeg" alt="Infinity Team Logo" class="header-logo">
+        <h1>Infinity Team – Leadership Directory</h1>
+        <p>Sadat Academy for Management Sciences · Faculty of Administrative Sciences · Assiut Branch</p>
+        <div class="count-pill"><i class="fa-solid fa-users"></i> &nbsp;13 Leaders</div><br>
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Main Site</a>
+    </div>
+    <!-- Directory -->
+    <div class="directory">
+        <!-- ── President & Vice ── -->
+        <div class="section-label"><span><i class="fa-solid fa-star"></i> &nbsp;Leadership</span></div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-star"></i> Leadership</span>
+                <h2 class="leader-name">Ahmed Mostafa</h2>
+                <p class="leader-title">Team Leader &amp; President</p>
+                <div class="photo-frame">
+                    <img src="images/ahmed_mostafa.jpg" alt="Ahmed Mostafa" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-ahmed-mostafa').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-ahmed-mostafa">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-star"></i> Leadership</span>
+                <h2 class="leader-name">Ahmed Othman</h2>
+                <p class="leader-title">Vice President &amp; Deputy Team Leader</p>
+                <div class="photo-frame">
+                    <img src="images/ahmed_othman.jpg" alt="Ahmed Othman" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-ahmed-othman').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-ahmed-othman">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ── Marketing ── -->
+        <div class="section-label"><span><i class="fa-solid fa-chart-line"></i> &nbsp;Marketing Committee</span></div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-chart-line"></i> Marketing</span>
+                <h2 class="leader-name">Mostafa Fahmy</h2>
+                <p class="leader-title">Head of Marketing</p>
+                <div class="photo-frame">
+                    <img src="images/mostafa_fahmy.jpg" alt="Mostafa Fahmy" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-mostafa-fahmy').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-mostafa-fahmy">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-chart-line"></i> Marketing</span>
+                <h2 class="leader-name">Kareem Saber</h2>
+                <p class="leader-title">Vice of Marketing</p>
+                <div class="photo-frame">
+                    <img src="images/kareem_saber.jpg" alt="Kareem Saber" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-kareem-saber').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-kareem-saber">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ── PR ── -->
+        <div class="section-label"><span><i class="fa-solid fa-bullhorn"></i> &nbsp;PR Committee</span></div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-bullhorn"></i> PR</span>
+                <h2 class="leader-name">Ahmed Wael</h2>
+                <p class="leader-title">Head of PR</p>
+                <div class="photo-frame">
+                    <img src="images/Ahmed Wael.jpg" alt="Ahmed Wael" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-mariam-hosny').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-mariam-hosny">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-bullhorn"></i> PR</span>
+                <h2 class="leader-name">Safia Sayed</h2>
+                <p class="leader-title">Vice of PR</p>
+                <div class="photo-frame">
+                    <img src="images/Safia Sayed.jpg" alt="Safia Sayed" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-abdulrahman-hatem').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-abdulrahman-hatem">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ── OR ── -->
+        <div class="section-label"><span><i class="fa-solid fa-calendar-check"></i> &nbsp;OR Committee</span></div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-calendar-check"></i> OR</span>
+                <h2 class="leader-name">Musab Mostafa</h2>
+                <p class="leader-title">Head of OR</p>
+                <div class="photo-frame">
+                    <img src="images/musab_mostafa.jpg" alt="Musab Mostafa" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-musab-mostafa').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-musab-mostafa">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-calendar-check"></i> OR</span>
+                <h2 class="leader-name">Dalia Nasser</h2>
+                <p class="leader-title">Vice of OR</p>
+                <div class="photo-frame">
+                    <img src="images/dalia_nasser.jpg" alt="Dalia Nasser" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-dalia-nasser').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-dalia-nasser">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ── SCC ── -->
+        <div class="section-label"><span><i class="fa-solid fa-flask"></i> &nbsp;SCC Committee</span></div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-flask"></i> S&C</span>
+                <h2 class="leader-name">Gihad Yasser</h2>
+                <p class="leader-title">Head of S&C</p>
+                <div class="photo-frame"> <img src="images/gihad_yasser.jpg" alt="Gihad Yasser" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-gihad-yasser').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-gihad-yasser">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-flask"></i> S&C</span>
+                <h2 class="leader-name">Areej Gamal</h2>
+                <p class="leader-title">Vice of S&C</p>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ── HR ── -->
+        <div class="section-label"><span><i class="fa-solid fa-handshake"></i> &nbsp;HR Team</span></div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-handshake"></i> HR</span>
+                <h2 class="leader-name">Amir Mohamed</h2>
+                <p class="leader-title">HR Responsible</p>
+                <div class="photo-frame">
+                    <img src="images/amir_mohamed.jpg" alt="Amir Mohamed" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-amir-mohamed').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-amir-mohamed">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-handshake"></i> HR</span>
+                <h2 class="leader-name">Shreif Aldsoky</h2>
+                <p class="leader-title">HR Responsible</p>
+                <div class="photo-frame">
+                    <img src="images/shreif_aldsoky.jpg" alt="Shreif Aldsoky" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-shreif-aldsoky').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-shreif-aldsoky">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-card-accent"></div>
+            <div class="leader-card-body">
+                <span class="committee-badge"><i class="fa-solid fa-handshake"></i> HR</span>
+                <h2 class="leader-name">Shams Yasser</h2>
+                <p class="leader-title">HR Responsible</p>
+                <div class="photo-frame">
+                    <img src="images/shams_yasser.jpg" alt="Shams Yasser" class="leader-photo" onerror="this.style.display='none'; document.getElementById('placeholder-shams-yasser').style.display='flex';">
+                    <div class="photo-placeholder" style="display:none;" id="placeholder-shams-yasser">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Photo Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="page-footer">
+        <p>© 2026 Infinity Team · Sadat Academy for Management Sciences, Assiut Branch</p>
+        <p style="font-size: 0.85rem; color: #64748B; margin-top: 0.4rem;"> Designed by: <span style="font-weight: 700; color: #1A202C;">Ahmed Othman & Gihad Yasser</span> · <br>
+            Email: <a href="mailto:ahmed3thman01@gmail.com" style="color: #0A58CA; text-decoration: none;">ahmed3thman01@gmail.com</a> <br>
+            Email: <a href="mailto:gihad12az@gmail.com" style="color: var(--blue); text-decoration: none;">gihad12az@gmail.com</a> </p>
+        <p style="margin-top: 0.6rem;"><a href="index.html" style="color: #0A58CA; text-decoration: none; font-weight: 500;"><i class="fa-solid fa-arrow-left"></i> Return to Main Site</a></p>
+    </div>
+</body>
+</html>
