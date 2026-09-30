@@ -63,6 +63,7 @@ html {
 body {
   line-height: 1.6;
   overflow-x: hidden;
+  width: fit-content;
 }
 ul {
   list-style: none;
@@ -81,9 +82,9 @@ img {
 }
 /* ========================================= UTILITIES & LAYOUT ========================================= */
 .container {
-  width: 90%;
-  max-width: var(--max-width);
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 .text-center {
   text-align: center;
@@ -200,7 +201,7 @@ img {
   color: #fff;
 }
 .btn-lg {
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   font-size: 1.1rem;
 }
 .btn-block {
@@ -225,12 +226,14 @@ img {
 .section-title {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 .title-underline {
   height: 4px;
   width: 80px;
   background: var(--blue-grad);
   border-radius: 2px;
+  margin: 0 auto;
 }
 .title-underline.center {
   margin: 0 auto;
@@ -337,6 +340,16 @@ img {
   position: relative;
   overflow: hidden;
   padding-top: var(--header-height);
+}
+@media (max-width: 480px) {
+    .hero {
+    height: auto;
+  }
+}
+@media (max-width: 720px) {
+    .hero {
+    height: auto;
+  }
 }
 .hero-bg {
   position: absolute;
