@@ -63,8 +63,22 @@ html {
 body {
   line-height: 1.6;
   overflow-x: hidden;
-  width: fit-content;
 }
+@media (max-width: 1024px) {
+    body {
+      width: auto;
+    }
+  }
+@media (max-width: 720px) {
+    body {
+      width: auto;
+    }
+  }
+@media (max-width: 480px) {
+    body {
+      width: fit-content;
+    }
+  }
 ul {
   list-style: none;
 }
