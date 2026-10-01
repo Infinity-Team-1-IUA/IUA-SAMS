@@ -96,8 +96,8 @@ img {
 }
 /* ========================================= UTILITIES & LAYOUT ========================================= */
 .container {
-  width: 100%;
-  max-width: 1200px;
+  width: 95%;
+  max-width: 1250px;
   margin: auto;
 }
 .text-center {
@@ -271,7 +271,8 @@ img {
 }
 .nav-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 7rem;
   align-items: center;
   height: 100%;
 }
