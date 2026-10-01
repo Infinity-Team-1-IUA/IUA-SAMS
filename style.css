@@ -1534,76 +1534,7 @@ textarea:focus {
   color: var(--error);
   display: block;
 }
-/* ========================================= FUTURE ACHIEVEMENTS ========================================= */
-.milestone-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-.milestone-card {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-.milestone-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-.milestone-img-wrapper {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-.milestone-img-placeholder {
-  width: 100%;
-  height: 100%;
-  background: var(--gray-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  color: var(--gray);
-  transition: transform 0.5s ease;
-}
-.milestone-card:hover .milestone-img-placeholder {
-  transform: scale(1.05);
-}
-.date-tag {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: var(--primary-blue);
-  color: #fff;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-.milestone-content {
-  padding: 1.5rem;
-}
-.milestone-content h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
-}
-.milestone-desc {
-  color: var(--gray);
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-}
-.read-more {
-  color: var(--primary-blue);
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: gap var(--transition-speed);
-}
-.read-more:hover {
-  gap: 0.8rem;
-}
+
 /* ========================================= PREMIUM SIGN UP / REGISTRATION SECTION ========================================= */
 .signup {
   padding: 6rem 0;
@@ -2130,3 +2061,5 @@ textarea:focus {
     max-height: 0;
     pointer-events: none;
 }
+.hide-card {
+  display: none !important; }

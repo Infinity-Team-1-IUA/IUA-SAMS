@@ -389,15 +389,11 @@ filterButtons.forEach(button => {
         button.classList.add("active", "btn-primary");
         button.classList.remove("btn-outline-primary");
         achievementCards.forEach(card => {
-            const showCard = filter === "all" || card.dataset.year === filter;
-            if (showCard) {
+            const cardYear = card.dataset.year;
+            if (filter === "all" || cardYear === filter) {
                 card.classList.remove("hide-card");
-                card.style.maxHeight = card.scrollHeight + "px";
             } else {
-                card.style.maxHeight = card.scrollHeight + "px";
-                requestAnimationFrame(() => {
-                    card.classList.add("hide-card");
-                });
+                card.classList.add("hide-card");
             }
         });
     });
