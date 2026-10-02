@@ -398,3 +398,43 @@ filterButtons.forEach(button => {
         });
     });
 });
+/*seleder*/
+    const adventureImages = [
+        "imge/Ramadan.jpeg",
+        "imge/Ramadan 1.jpeg",
+        "imge/Ramadan 2.jpeg",
+        "imge/Ramadan 3.jpeg",
+        "imge/Ramadan 4.jpeg"
+    ];
+    let currentImage = 0;
+    setInterval(function () {
+        currentImage++;
+        if (currentImage >= adventureImages.length) {
+            currentImage = 0;
+        }
+        document.getElementById("adventureImage").src =
+            adventureImages[currentImage];
+    }, 1000);
+
+
+const memberImages = [
+    "imge/MEMBERS APPRECIATION.jpeg",
+    "imge/MEMBERS APPRECIATION 1.jpeg",
+    "imge/MEMBERS APPRECIATION 2.jpeg",
+    "imge/MEMBERS APPRECIATION 3.jpeg",
+    "imge/MEMBERS APPRECIATION 4.jpeg"
+];
+
+let memberCurrentImage = 0;
+
+setInterval(function () {
+    memberCurrentImage++;
+
+    if (memberCurrentImage >= memberImages.length) {
+        memberCurrentImage = 0;
+    }
+
+    document.getElementById("memberImage").src =
+        memberImages[memberCurrentImage];
+
+}, 1000);
